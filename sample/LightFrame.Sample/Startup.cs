@@ -1,6 +1,8 @@
 ﻿using Autofac;
 using LightFrame.MvcApplication;
+using LightFrame.Sample.Core;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 
 namespace LightFrame.Sample
 {
@@ -12,7 +14,17 @@ namespace LightFrame.Sample
 
         public override void ConfigureContainer(ContainerBuilder builder)
         {
-            builder.RegisterModule(new MvcApplicationModule());
+            builder.RegisterModule<MvcApplicationModule>();
+
+            builder.RegisterType<RandomValueFactory>()
+                .AsImplementedInterfaces();
+
+            builder.Register(cc =>
+            {
+                var settings = new ApplicationSettings();
+                Configuration.GetSection("Application").Bind(settings);
+                return settings;
+            });
         }
     }
 }

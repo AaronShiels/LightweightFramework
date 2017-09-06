@@ -1,0 +1,61 @@
+2017-09-06 21:02:59.882 +10:00 [Debug] Hosting starting
+2017-09-06 21:03:00.352 +10:00 [Debug] Hosting started
+2017-09-06 21:03:00.513 +10:00 [Debug] Connection id ""0HL7L2RBA2SLU"" started.
+2017-09-06 21:03:00.600 +10:00 [Debug] Connection id ""0HL7L2RBA2SLV"" started.
+2017-09-06 21:03:00.869 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:4495/api/values  
+2017-09-06 21:03:00.886 +10:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:4495/  0
+2017-09-06 21:03:01.238 +10:00 [Debug] Connection id ""0HL7L2RBA2SLV"" completed keep alive response.
+2017-09-06 21:03:01.253 +10:00 [Information] Request finished in 467.0826ms 200 
+2017-09-06 21:03:02.186 +10:00 [Debug] Request successfully matched the route with name 'null' and template '"api/Values"'.
+2017-09-06 21:03:02.223 +10:00 [Debug] Action '"LightFrame.Sample.Controllers.ValuesController.Post (LightFrame.Sample)"' with id '"e7f276bd-270c-4646-83d3-661daa085905"' did not match the constraint '"Microsoft.AspNetCore.Mvc.Internal.HttpMethodActionConstraint"'
+2017-09-06 21:03:02.261 +10:00 [Debug] Executing action "LightFrame.Sample.Controllers.ValuesController.Get (LightFrame.Sample)"
+2017-09-06 21:03:02.478 +10:00 [Information] Executing action method "LightFrame.Sample.Controllers.ValuesController.Get (LightFrame.Sample)" with arguments (null) - ModelState is Valid
+2017-09-06 21:03:02.479 +10:00 [Debug] Executed action method "LightFrame.Sample.Controllers.ValuesController.Get (LightFrame.Sample)", returned result "Microsoft.AspNetCore.Mvc.ObjectResult".
+2017-09-06 21:03:02.509 +10:00 [Debug] No information found on request to perform content negotiation.
+2017-09-06 21:03:02.513 +10:00 [Debug] Selected output formatter '"Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter"' and content type '"application/json"' to write the response.
+2017-09-06 21:03:02.513 +10:00 [Information] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext".
+2017-09-06 21:03:02.822 +10:00 [Information] Executed action "LightFrame.Sample.Controllers.ValuesController.Get (LightFrame.Sample)" in 556.8565ms
+2017-09-06 21:03:02.829 +10:00 [Debug] Connection id ""0HL7L2RBA2SLU"" completed keep alive response.
+2017-09-06 21:03:02.829 +10:00 [Information] Request finished in 2039.0076ms 200 application/json; charset=utf-8
+2017-09-06 21:03:03.790 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:4495/favicon.ico  
+2017-09-06 21:03:03.792 +10:00 [Debug] Request did not match any routes.
+2017-09-06 21:03:03.793 +10:00 [Debug] Connection id ""0HL7L2RBA2SLV"" completed keep alive response.
+2017-09-06 21:03:03.793 +10:00 [Information] Request finished in 3.4846ms 404 
+2017-09-06 21:09:10.038 +10:00 [Debug] Hosting starting
+2017-09-06 21:09:10.205 +10:00 [Debug] Hosting started
+2017-09-06 21:09:10.417 +10:00 [Debug] Connection id ""0HL7L2UPHO9QM"" started.
+2017-09-06 21:09:10.430 +10:00 [Debug] Connection id ""0HL7L2UPHO9QN"" started.
+2017-09-06 21:09:10.550 +10:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:4495/  0
+2017-09-06 21:09:10.692 +10:00 [Debug] Connection id ""0HL7L2UPHO9QM"" completed keep alive response.
+2017-09-06 21:09:10.699 +10:00 [Information] Request finished in 184.6419ms 200 
+2017-09-06 21:09:10.706 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:4495/api/values  
+2017-09-06 21:09:10.955 +10:00 [Debug] Request successfully matched the route with name 'null' and template '"api/Values"'.
+2017-09-06 21:09:10.980 +10:00 [Debug] Action '"LightFrame.Sample.Controllers.ValuesController.Post (LightFrame.Sample)"' with id '"05dea631-f092-4833-8a74-4a7d930b7cf3"' did not match the constraint '"Microsoft.AspNetCore.Mvc.Internal.HttpMethodActionConstraint"'
+2017-09-06 21:09:11.010 +10:00 [Debug] Executing action "LightFrame.Sample.Controllers.ValuesController.Get (LightFrame.Sample)"
+2017-09-06 21:09:11.261 +10:00 [Information] Executing action method "LightFrame.Sample.Controllers.ValuesController.Get (LightFrame.Sample)" with arguments (null) - ModelState is Valid
+2017-09-06 21:09:11.263 +10:00 [Debug] Executed action method "LightFrame.Sample.Controllers.ValuesController.Get (LightFrame.Sample)", returned result "Microsoft.AspNetCore.Mvc.ObjectResult".
+2017-09-06 21:09:11.290 +10:00 [Debug] No information found on request to perform content negotiation.
+2017-09-06 21:09:11.293 +10:00 [Debug] Selected output formatter '"Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter"' and content type '"application/json"' to write the response.
+2017-09-06 21:09:11.293 +10:00 [Information] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext".
+2017-09-06 21:09:11.517 +10:00 [Information] Executed action "LightFrame.Sample.Controllers.ValuesController.Get (LightFrame.Sample)" in 503.4282ms
+2017-09-06 21:09:11.520 +10:00 [Debug] Connection id ""0HL7L2UPHO9QN"" completed keep alive response.
+2017-09-06 21:09:11.520 +10:00 [Information] Request finished in 814.5579ms 200 application/json; charset=utf-8
+2017-09-06 21:31:59.357 +10:00 [Debug] Hosting starting
+2017-09-06 21:31:59.558 +10:00 [Debug] Hosting started
+2017-09-06 21:31:59.589 +10:00 [Debug] Connection id ""0HL7L3BHJ6FNQ"" started.
+2017-09-06 21:31:59.602 +10:00 [Debug] Connection id ""0HL7L3BHJ6FNR"" started.
+2017-09-06 21:31:59.739 +10:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:4495/  0
+2017-09-06 21:31:59.844 +10:00 [Debug] Connection id ""0HL7L3BHJ6FNQ"" completed keep alive response.
+2017-09-06 21:31:59.853 +10:00 [Information] Request finished in 133.5337ms 200 
+2017-09-06 21:31:59.875 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:4495/api/values  
+2017-09-06 21:32:00.158 +10:00 [Debug] Request successfully matched the route with name 'null' and template '"api/Values"'.
+2017-09-06 21:32:00.187 +10:00 [Debug] Action '"LightFrame.Sample.Controllers.ValuesController.Post (LightFrame.Sample)"' with id '"d5044423-f16a-42b9-8685-497be3a464e4"' did not match the constraint '"Microsoft.AspNetCore.Mvc.Internal.HttpMethodActionConstraint"'
+2017-09-06 21:32:00.222 +10:00 [Debug] Executing action "LightFrame.Sample.Controllers.ValuesController.Get (LightFrame.Sample)"
+2017-09-06 21:32:00.440 +10:00 [Information] Executing action method "LightFrame.Sample.Controllers.ValuesController.Get (LightFrame.Sample)" with arguments (null) - ModelState is Valid
+2017-09-06 21:32:00.441 +10:00 [Debug] Executed action method "LightFrame.Sample.Controllers.ValuesController.Get (LightFrame.Sample)", returned result "Microsoft.AspNetCore.Mvc.ObjectResult".
+2017-09-06 21:32:00.464 +10:00 [Debug] No information found on request to perform content negotiation.
+2017-09-06 21:32:00.469 +10:00 [Debug] Selected output formatter '"Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter"' and content type '"application/json"' to write the response.
+2017-09-06 21:32:00.469 +10:00 [Information] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext".
+2017-09-06 21:32:00.745 +10:00 [Information] Executed action "LightFrame.Sample.Controllers.ValuesController.Get (LightFrame.Sample)" in 519.8269ms
+2017-09-06 21:32:00.750 +10:00 [Debug] Connection id ""0HL7L3BHJ6FNR"" completed keep alive response.
+2017-09-06 21:32:00.750 +10:00 [Information] Request finished in 875.2616ms 200 application/json; charset=utf-8

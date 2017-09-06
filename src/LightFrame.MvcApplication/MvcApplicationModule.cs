@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using LightFrame.Logging;
+using LightFrame.MvcApplication.Filters;
 
 namespace LightFrame.MvcApplication
 {
@@ -7,7 +8,9 @@ namespace LightFrame.MvcApplication
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterModule(new LoggingModule());
+            builder.RegisterModule<LoggingModule>();
+
+            builder.RegisterType<HookActionFilter>();
         }
     }
 }

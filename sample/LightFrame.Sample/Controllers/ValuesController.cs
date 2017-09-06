@@ -1,26 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using LightFrame.Sample.Core;
 
 namespace LightFrame.Sample.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
+        private readonly IValueFactory _valueFac;
+
+        public ValuesController(IValueFactory valueFac)
+        {
+            _valueFac = valueFac;
+        }
+
         // GET api/values
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new string[] { _valueFac.Value, _valueFac.Value };
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
-            return "value";
+            return _valueFac.Value;
         }
 
         // POST api/values
