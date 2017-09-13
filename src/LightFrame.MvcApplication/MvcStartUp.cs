@@ -1,6 +1,6 @@
 ﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using LightFrame.Logging;
+using LightFrame.MvcApplication.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -13,8 +13,6 @@ namespace LightFrame.MvcApplication
 {
     public abstract class MvcStartUp
     {
-        private IContainer _applicationContainer;
-
         public MvcStartUp(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -24,8 +22,6 @@ namespace LightFrame.MvcApplication
                 .AddEnvironmentVariables();
 
             Configuration = builder.Build();
-
-            Log.Logger = LoggerConfigurator.Default(Configuration.GetSection("Logging"));
         }
 
         public IConfigurationRoot Configuration { get; }
@@ -38,17 +34,24 @@ namespace LightFrame.MvcApplication
             ConfigureContainer(builder);
 
             builder.Populate(services);
-            _applicationContainer = builder.Build();
 
-            return new AutofacServiceProvider(_applicationContainer);
+            var container = builder.Build();
+            return new AutofacServiceProvider(container);
         }
 
         public abstract void ConfigureContainer(ContainerBuilder builder);
 
         public virtual void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddSerilog();
+            var webLogger = app
+                .ApplicationServices
+                .GetService<Serilog.ILogger>()
+                .ForContext("Framework", "Web");
 
+            loggerFactory.AddSerilog(webLogger);
+
+            app.UseStaticFiles();
+            app.UseActionMiddleware();
             app.UseMvc();
         }
     }

@@ -1,8 +1,10 @@
 ﻿using Autofac;
+using LightFrame.Core;
+using LightFrame.Logging;
 using LightFrame.MvcApplication;
 using LightFrame.Sample.Core;
+using LightFrame.Sample.Middleware;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 
 namespace LightFrame.Sample
 {
@@ -14,17 +16,22 @@ namespace LightFrame.Sample
 
         public override void ConfigureContainer(ContainerBuilder builder)
         {
-            builder.RegisterModule<MvcApplicationModule>();
+            builder.RegisterInstance(Configuration)
+                .AsImplementedInterfaces();
+
+            builder.RegisterModule<LoggingModule>();
+
+            builder.RegisterSetting<ApplicationSettings>("Application");
+
+            builder.RegisterType<MiddlewareA>()
+                .AsImplementedInterfaces();
+            builder.RegisterType<MiddlewareB>()
+                .AsImplementedInterfaces();
+            builder.RegisterType<MiddlewareC>()
+                .AsImplementedInterfaces();
 
             builder.RegisterType<RandomValueFactory>()
                 .AsImplementedInterfaces();
-
-            builder.Register(cc =>
-            {
-                var settings = new ApplicationSettings();
-                Configuration.GetSection("Application").Bind(settings);
-                return settings;
-            });
         }
     }
 }

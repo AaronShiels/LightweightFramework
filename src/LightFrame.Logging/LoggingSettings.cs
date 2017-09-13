@@ -2,7 +2,7 @@
 
 namespace LightFrame.Logging
 {
-    public class Settings
+    public class LoggingSettings
     {
         public string Application { get; }
         public string Environment { get; }

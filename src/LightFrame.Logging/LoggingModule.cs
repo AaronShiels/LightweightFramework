@@ -1,7 +1,6 @@
 ﻿using Autofac;
+using LightFrame.Core;
 using LightFrame.Logging.Hooks;
-using Microsoft.Extensions.Configuration;
-using Serilog;
 
 namespace LightFrame.Logging
 {
@@ -9,23 +8,19 @@ namespace LightFrame.Logging
     {
         protected override void Load(ContainerBuilder builder)
         {
+            builder.RegisterSetting<LoggingSettings>("Logging");
+
             builder
                 .Register(ctx =>
                 {
-                    var settings = new Settings();
-                    ctx.Resolve<IConfiguration>().Bind(settings);
-
-                    return settings;
+                    var settings = ctx.Resolve<LoggingSettings>();
+                    return LoggerConfigurator.Default(settings);
                 })
-                .SingleInstance();
-
-            builder
-                .RegisterInstance(Log.Logger)
                 .AsImplementedInterfaces()
                 .SingleInstance();
 
             builder
-                .RegisterType<LoggingHook>()
+                .RegisterType<LoggingMiddleware>()
                 .AsImplementedInterfaces()
                 .InstancePerLifetimeScope();
         }
