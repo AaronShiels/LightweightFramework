@@ -19,9 +19,8 @@ namespace LightFrame.Sample
             builder.RegisterInstance(Configuration)
                 .AsImplementedInterfaces();
 
+            builder.RegisterModule<CoreModule>();
             builder.RegisterModule<LoggingModule>();
-
-            builder.RegisterSetting<ApplicationSettings>("Application");
 
             builder.RegisterType<MiddlewareA>()
                 .AsImplementedInterfaces();

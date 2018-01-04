@@ -3,7 +3,7 @@ using Serilog.Events;
 
 namespace LightFrame.Logging.Enrichers
 {
-    public class ApplicationEnricher : ILogEventEnricher
+    internal class ApplicationEnricher : ILogEventEnricher
     {
         private readonly string _application;
         private const string ApplicationKey = "Application";

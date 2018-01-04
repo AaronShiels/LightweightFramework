@@ -1,10 +1,9 @@
-﻿using System;
-using Serilog.Core;
+﻿using Serilog.Core;
 using Serilog.Events;
 
 namespace LightFrame.Logging.Enrichers
 {
-    public class EnvironmentEnricher : ILogEventEnricher
+    internal class EnvironmentEnricher : ILogEventEnricher
     {
         private readonly string _environment;
         private const string EnvironmentKey = "Environment";

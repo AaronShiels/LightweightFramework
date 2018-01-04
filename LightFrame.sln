@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LightFrame.Logging", "src\L
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LightFrame.Sample", "sample\LightFrame.Sample\LightFrame.Sample.csproj", "{CF865D12-7119-406A-BF16-B38B10B8A537}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightFrame.MvcApplication", "src\LightFrame.MvcApplication\LightFrame.MvcApplication.csproj", "{CAC70E23-5BCF-4D76-BA11-DC54C6141FD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LightFrame.MvcApplication", "src\LightFrame.MvcApplication\LightFrame.MvcApplication.csproj", "{CAC70E23-5BCF-4D76-BA11-DC54C6141FD4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightFrame.RabbitMq", "src\LightFrame.RabbitMq\LightFrame.RabbitMq.csproj", "{7529EDF3-7959-4455-855E-3917C554D72C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{CAC70E23-5BCF-4D76-BA11-DC54C6141FD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAC70E23-5BCF-4D76-BA11-DC54C6141FD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAC70E23-5BCF-4D76-BA11-DC54C6141FD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7529EDF3-7959-4455-855E-3917C554D72C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7529EDF3-7959-4455-855E-3917C554D72C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7529EDF3-7959-4455-855E-3917C554D72C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7529EDF3-7959-4455-855E-3917C554D72C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
