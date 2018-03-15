@@ -1,9 +1,6 @@
-﻿using System.Threading.Tasks;
-
-namespace LightFrame.Messaging
+﻿namespace LightFrame.Messaging
 {
-    public interface IEventHandler<in T>
+    public interface IEventHandler<in T> : IHandler<T> where T : class
     {
-        Task Handle(T command);
     }
 }

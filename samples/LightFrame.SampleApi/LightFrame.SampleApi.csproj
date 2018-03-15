@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\LightFrame.EntityFramework\LightFrame.EntityFramework.csproj" />
+    <ProjectReference Include="..\..\src\LightFrame.RabbitMq\LightFrame.RabbitMq.csproj" />
     <ProjectReference Include="..\LightFrame.SampleCore\LightFrame.SampleCore.csproj" />
   </ItemGroup>
 

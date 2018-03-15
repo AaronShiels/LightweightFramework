@@ -5,7 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Handlers\" />
+    <ProjectReference Include="..\..\src\LightFrame.Messaging\LightFrame.Messaging.csproj" />
+    <ProjectReference Include="..\LightFrame.SampleMessages\LightFrame.SampleMessages.csproj" />
   </ItemGroup>
 
   <ItemGroup>

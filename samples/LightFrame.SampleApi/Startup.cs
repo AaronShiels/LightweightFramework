@@ -1,5 +1,9 @@
 ﻿using LightFrame.EntityFramework;
+using LightFrame.Messaging;
+using LightFrame.RabbitMq;
 using LightFrame.SampleCore.Domain.Context;
+using LightFrame.SampleCore.Handlers;
+using LightFrame.SampleMessages;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -19,21 +23,23 @@ namespace LightFrame.SampleApi
         
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IHandler, AddItemHandler>();
+
             services.AddDbContext<InventoryContext>(o => o.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<IInventoryContext, InventoryContext>();
 
+            services.AddServiceBus(Configuration);
             services.AddMvc();
         }
         
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IApplicationLifetime lifetime, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
-            {
                 app.UseDeveloperExceptionPage();
-            }
 
             app.UseDatabaseUnitOfWork<InventoryContext>();
             app.UseMvc();
+            app.UseServiceBus(lifetime);
         }
     }
 }
