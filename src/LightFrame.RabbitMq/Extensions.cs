@@ -1,12 +1,12 @@
 ﻿using LightFrame.Messaging;
+using LightFrame.RabbitMq.Handlers;
+using LightFrame.RabbitMq.Publishers;
 using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using System;
-using System.Diagnostics;
 
 namespace LightFrame.RabbitMq
 {
@@ -16,32 +16,28 @@ namespace LightFrame.RabbitMq
         {
             services.Configure<Settings>(config);
 
-            return services.AddSingleton(svc =>
+            services.AddTransient<IPublisher, Publisher>();
+            services.AddScoped<IOutbox, Outbox>();
+
+            services.AddSingleton(svc =>
             {
-                var settings = svc.GetService<IOptions<Settings>>().Value;
+                var settings = svc.GetRequiredService<IOptions<Settings>>().Value;
 
-                return Bus.Factory.CreateUsingRabbitMq(cfg =>
-                {
-                    var hostUri = new Uri($"rabbitmq://{settings.ServiceBus.Host}");
-                    var host = cfg.Host(hostUri, hCfg =>
-                    {
-                        hCfg.Heartbeat((ushort)(Debugger.IsAttached ? 0 : 5));
-                        hCfg.Username(settings.ServiceBus.Username ?? "guest");
-                        hCfg.Password(settings.ServiceBus.Password ?? "guest");
-                    });
+                var hostAddress = settings.ServiceBus.Host;
+                var username = settings.ServiceBus.Username;
+                var password = settings.ServiceBus.Password;
+                var applicationName = settings.Application.Name;
 
-                    var allConsumers = svc.GetServices<IHandler>();
-                    cfg.ReceiveEndpoint(host, settings.Application.Name, eCfg =>
-                    {
-                        throw new NotImplementedException();
-                    });
-                });
+                return BusFactory.Create(applicationName, hostAddress, username, password, eCfg => eCfg.ConfigureHandlersAsConsumers(svc));
             });
+            services.AddSingleton<IBus>(svc => svc.GetRequiredService<IBusControl>());
+
+            return services;
         }
 
         public static void UseServiceBus(this IApplicationBuilder app, IApplicationLifetime lifetime)
         {
-            var bus = app.ApplicationServices.GetService<IBusControl>();
+            var bus = app.ApplicationServices.GetRequiredService<IBusControl>();
 
             lifetime.ApplicationStarted.Register(() => bus.Start());
             lifetime.ApplicationStopping.Register(() => bus.Stop());

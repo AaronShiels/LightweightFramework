@@ -24,6 +24,7 @@ namespace LightFrame.SampleApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IHandler, AddItemHandler>();
+            services.AddTransient<IHandler<AddItemCommand>, AddItemHandler>();
 
             services.AddDbContext<InventoryContext>(o => o.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<IInventoryContext, InventoryContext>();
@@ -39,6 +40,7 @@ namespace LightFrame.SampleApi
 
             app.UseDatabaseUnitOfWork<InventoryContext>();
             app.UseMvc();
+
             app.UseServiceBus(lifetime);
         }
     }

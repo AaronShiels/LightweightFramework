@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Threading.Tasks;
 
 namespace LightFrame.EntityFramework
 {
@@ -10,12 +12,17 @@ namespace LightFrame.EntityFramework
         {
             return app.Use(async (context, next) =>
             {
-                var dbContext = context.RequestServices.GetService<TDbContext>();
+                var dbContext = context.RequestServices.GetRequiredService<TDbContext>();
 
-                await next();
-
-                await dbContext.SaveChangesAsync();
+                await DatabaseUnitOfWork(dbContext, next);
             });
+        }
+
+        private async static Task DatabaseUnitOfWork<TDbContext>(TDbContext dbContext, Func<Task> next) where TDbContext : DbContext
+        {
+            await next();
+
+            await dbContext.SaveChangesAsync();
         }
     }
 }
